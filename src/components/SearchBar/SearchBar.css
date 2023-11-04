@@ -33,3 +33,17 @@
 .searchButton:hover {
     background-color: #1aa34a;
 }
+
+@media only screen and (max-width: 400px) {
+
+    .searchBar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .searchButton {
+        margin-top: 10px;
+    }
+
+
+  }
