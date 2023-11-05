@@ -46,13 +46,26 @@ const App = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState("New Playlist");
   const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [initialLoad, setInitialLoad] = useState(true);
+
+  if (initialLoad) {
+    const savedPlaylistTracks = JSON.parse(localStorage.getItem("playlistTracks"));
+    setPlaylistTracks(savedPlaylistTracks);
+    
+    const filteredDefaultTracks = defaultTracks.filter((defaultTrack) => {
+      return !savedPlaylistTracks.some((track) => track.id === defaultTrack.id);
+    });
+    
+    setSearchResults(filteredDefaultTracks);
+    setInitialLoad(false);
+  }
+
+  useEffect(() => {
+    localStorage.setItem("playlistTracks", JSON.stringify(playlistTracks));
+  }, [playlistTracks]);
 
   useEffect(() => {
     Spotify.getAccessToken();
-    const filteredDefaultTracks = defaultTracks.filter((defaultTrack) => {
-      return !playlistTracks.some((track) => track.id === defaultTrack.id);
-    });
-    setSearchResults(filteredDefaultTracks);
   }, []);
 
   const search = (term) => {
