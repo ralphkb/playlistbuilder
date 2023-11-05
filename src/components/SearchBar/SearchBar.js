@@ -21,6 +21,8 @@ const SearchBar = (props) => {
   return (
     <div className="searchBar">
       <input
+        id="songTitleInput"
+        name= "songTitle"
         type="text"
         placeholder="Enter a song title"
         value={searchTerm}
