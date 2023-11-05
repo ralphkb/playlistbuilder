@@ -72,6 +72,9 @@ const Spotify = {
           const response = await fetch('https://api.spotify.com/v1/me', { headers });
           const jsonResponse = await response.json();
           userId = jsonResponse.id;
+
+          // Show loading screen
+          document.getElementById('loading-screen').style.display = 'flex';
       
           const playlistResponse = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
             headers,
@@ -86,6 +89,12 @@ const Spotify = {
             method: 'POST',
             body: JSON.stringify({ uris: trackUris })
           });
+
+          // Hide loading screen
+          document.getElementById('loading-screen').style.display = 'none';
+
+          // Alert the user that the playlist has been saved successfully
+          alert('Playlist saved successfully!');
         } catch (error) {
           console.error(error);
         }
