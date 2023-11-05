@@ -12,6 +12,12 @@ const SearchBar = (props) => {
     props.onSearch(searchTerm);
   };
 
+  const handleEnterKey = (e) => {
+    if (e.key === "Enter") {
+      props.onSearch(searchTerm);
+    }
+  };
+
   return (
     <div className="searchBar">
       <input
@@ -19,6 +25,7 @@ const SearchBar = (props) => {
         placeholder="Enter a song title"
         value={searchTerm}
         onChange={handleInputChange}
+        onKeyDown={handleEnterKey}
       />
       <button className="searchButton" onClick={handleSearch}>
         Search
