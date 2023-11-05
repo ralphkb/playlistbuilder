@@ -19,15 +19,27 @@ const Spotify = {
           accessToken = accessTokenMatch[1];
           // Convert expiration time to number
           const expiresIn = Number(expiresInMatch[1]);
-          // Clear access token after expiration time
-          window.setTimeout(() => accessToken = '', expiresIn * 1000);
+          // Calculate the expiration time
+          const expirationTime = Date.now() + expiresIn * 1000;
+          // Store the access token and expiration time in local storage
+          localStorage.setItem('spotifyAccessToken', accessToken);
+          localStorage.setItem('spotifyTokenExpiration', expirationTime);
           // Clear URL parameters to grab a new access token when it expires
           window.history.pushState('Access Token', null, '/');
           return accessToken;
         } else {
-          // If access token is not found in URL, redirect to authorization URL
-          const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
-          window.location = accessUrl;
+          // If access token is not found in URL, check if it is stored in local storage
+          const storedAccessToken = localStorage.getItem('spotifyAccessToken');
+          const storedExpirationTime = localStorage.getItem('spotifyTokenExpiration');
+          // If stored access token and expiration time exist and the expiration time has not passed
+          if (storedAccessToken && storedExpirationTime && Date.now() < storedExpirationTime) {
+              accessToken = storedAccessToken;
+              return accessToken;
+          } else {
+              // If access token is not found in URL or local storage, redirect to authorization URL
+              const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+              window.location = accessUrl;
+          }
         }
       },
 
@@ -61,6 +73,13 @@ const Spotify = {
 
       async savePlaylist(name, trackUris) {
         if (!name || !trackUris.length) {
+          if (!name && !trackUris.length) {
+            window.alert("Please enter a playlist name and add songs to the playlist before saving it.");
+          } else if (!name) {
+            window.alert("Please enter a playlist name.");
+          } else {
+            window.alert("Please add songs to the playlist before saving it.");
+          }
           return;
         }
       
@@ -93,8 +112,8 @@ const Spotify = {
           // Hide loading screen
           document.getElementById('loading-screen').style.display = 'none';
 
-          // Alert the user that the playlist has been saved successfully
-          alert('Playlist saved successfully!');
+          // Alert the user that the playlist has been created successfully
+          alert(`A new playlist with the name: ${name} has been created successfully!`);
         } catch (error) {
           console.error(error);
         }
