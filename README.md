@@ -15,9 +15,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 2. Clone the repository: `git clone https://github.com/ralphkb/playlistbuilder.git`
 3. Navigate to the project directory, for example: `cd playlistbuilder`
 4. Run `npm install` to install the dependencies.
-5. Start the server by running `npm start`
-6. Open `http://localhost:3000/` in your browser, you will need to sign in to your Spotify account and authorize access.
-7. When done using the application, you can close it by pressing `Ctrl + C` in the terminal and closing your browser.
+5. Open `src/utils/SpotifyAPI.js` and change the redirectUri to "http://localhost:3000"
+6. Start the server by running `npm start`
+7. Open `http://localhost:3000/` in your browser, you will need to sign in to your Spotify account and authorize access.
+8. When done using the application, you can close it by pressing `Ctrl + C` in the terminal and closing your browser.
 
 ## Features
 - **Spotify Login**: Spotify will you to log in or set up a new account, to integrate with this App and start the process of creating new playlists.
