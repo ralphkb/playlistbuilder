@@ -50,13 +50,17 @@ const App = () => {
 
   if (initialLoad) {
     const savedPlaylistTracks = JSON.parse(localStorage.getItem("playlistTracks"));
-    setPlaylistTracks(savedPlaylistTracks);
-    
-    const filteredDefaultTracks = defaultTracks.filter((defaultTrack) => {
-      return !savedPlaylistTracks.some((track) => track.id === defaultTrack.id);
-    });
-    
-    setSearchResults(filteredDefaultTracks);
+  
+    if (savedPlaylistTracks) {
+      setPlaylistTracks(savedPlaylistTracks);
+      
+      const filteredDefaultTracks = defaultTracks.filter((defaultTrack) => {
+        return !savedPlaylistTracks.some((track) => track.id === defaultTrack.id);
+      });
+      
+      setSearchResults(filteredDefaultTracks);
+    }
+  
     setInitialLoad(false);
   }
 
