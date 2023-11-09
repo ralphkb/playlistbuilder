@@ -31,7 +31,8 @@ const Track = (props) => {
         <img src={props.track.image} alt={props.track.name} className="TrackImage" />
         <h3>{props.track.name}</h3>
         <p>
-          {props.track.artist} | {props.track.album}
+          Artist: <span>{props.track.artist}</span><br />
+          Album: <span>{props.track.album}</span>
         </p>
       </div>
       {renderAddOrRemove()}

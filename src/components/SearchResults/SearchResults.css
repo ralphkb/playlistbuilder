@@ -4,6 +4,7 @@
   overflow-y: scroll;
   background-color: rgba(29, 185, 84, 0.90);
   box-shadow: 0 4px 2px 2px #000000;
+  border-radius: 5px;
   margin-bottom: 1.5rem;
   padding: 20px;
 }
@@ -11,5 +12,11 @@
 @media only screen and (max-width: 400px) {
   .SearchResults {
     margin-left: 4vw;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .SearchResults {
+    width: 77%;
   }
 }

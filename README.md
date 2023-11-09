@@ -17,7 +17,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 4. Run `npm install` to install the dependencies.
 5. Open `src/utils/SpotifyAPI.js` and change the redirectUri to "http://localhost:3000"
 6. Start the server by running `npm start`
-7. Open `http://localhost:3000/` in your browser, you will need to sign in to your Spotify account and authorize access.
+7. Open `http://localhost:3000` in your browser, you will need to sign in to your Spotify account and authorize access.
 8. When done using the application, you can close it by pressing `Ctrl + C` in the terminal and closing your browser.
 
 ## Features

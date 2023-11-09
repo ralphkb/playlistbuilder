@@ -6,7 +6,7 @@
   
   .TrackAction {
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 10px;
     font-size: 1.4rem;
     transition: color 0.25s;
     border: 0px;
@@ -35,11 +35,26 @@
   .TrackInfo p {
     font-size: 0.83rem;
     color: #000;
-    font-weight: 550;
+    font-weight: 600;
+  }
+
+  .TrackInfo span {
+    font-weight: normal;
   }
 
 .TrackImage {
     width: 48px;
     height: 48px;
     margin-right: 0.5rem;
+}
+
+@media only screen and (max-width: 440px) {
+
+  .TrackInfo h3 {
+    font-size: 1rem;
+  }
+
+  .TrackInfo p {
+    font-size: 0.7rem;
+  }
 }
