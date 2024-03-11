@@ -9,12 +9,6 @@
   padding: 20px;
 }
 
-@media only screen and (max-width: 400px) {
-  .SearchResults {
-    margin-left: 4vw;
-  }
-}
-
 @media only screen and (max-width: 440px) {
   .SearchResults {
     width: 77%;
