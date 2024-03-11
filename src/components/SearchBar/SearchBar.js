@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './SearchBar.css';
+import React, { useState } from "react";
+import "./SearchBar.css";
 
 const SearchBar = (props) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -22,7 +22,7 @@ const SearchBar = (props) => {
     <div className="searchBar">
       <input
         id="songTitleInput"
-        name= "songTitle"
+        name="songTitle"
         type="text"
         placeholder="Enter a song title"
         value={searchTerm}

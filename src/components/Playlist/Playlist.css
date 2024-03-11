@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(29, 185, 84, 0.90);
+  background-color: rgba(29, 185, 84, 0.9);
   box-shadow: 0 4px 2px 2px #000000;
   padding: 20px;
   border-radius: 5px;
   max-height: 950px;
   width: 80%;
 }
-  
+
 .Playlist input {
   width: 100%;
   padding: 10px;
@@ -18,7 +18,7 @@
   border-radius: 4px;
   margin-bottom: 10px;
 }
-  
+
 .PlaylistSave {
   background-color: #35da1f;
   color: #191414;
@@ -33,7 +33,7 @@
   margin-top: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
-  
+
 .PlaylistSave:hover {
   background-color: #19eb24;
 }
