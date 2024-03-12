@@ -13,13 +13,6 @@
   padding: 10px;
   font-size: 1.4rem;
   transition: color 0.25s;
-  border: 0px;
-  background-color: rgba(0, 0, 0, 0);
-  color: #000;
-}
-
-.TrackAction:hover {
-  color: #19eb24;
 }
 
 .TrackInfo {
@@ -34,6 +27,34 @@
   margin: 0.25rem 0;
   color: #000;
   font-weight: bold;
+}
+
+.addButton {
+  background-color: rgb(79, 226, 79);
+  color: black;
+  border: 1px solid #006400;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.removeButton {
+  background-color: #ff3333;
+  color: black;
+  border: 1px solid #b30000;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.addButton:hover {
+  background-color: #51ca51;
+}
+
+.removeButton:hover {
+  background-color: #e71f1f;
 }
 
 .TrackInfo p {
