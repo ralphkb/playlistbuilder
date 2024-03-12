@@ -73,6 +73,7 @@ const Spotify = {
         album: track.album.name,
         uri: track.uri,
         image: track.album.images[0].url,
+        length: track.duration_ms,
       }));
     } catch (error) {
       console.error(error);

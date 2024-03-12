@@ -15,6 +15,7 @@ const defaultTracks = [
     image: "https://i.scdn.co/image/ab67616d0000b27352b2a3824413eefe9e33817a",
     id: "1u8c2t2Cy7UBoG4ArRcF5g",
     uri: "spotify:track:1u8c2t2Cy7UBoG4ArRcF5g",
+    length: 232000,
   },
   {
     name: "Into You",
@@ -23,6 +24,7 @@ const defaultTracks = [
     image: "https://i.scdn.co/image/ab67616d0000b27333342c57a9b2c4e04c97b3f5",
     id: "76FZM38RC8XaAjJ77CVTNe",
     uri: "spotify:track:76FZM38RC8XaAjJ77CVTNe",
+    length: 244000,
   },
   {
     name: "Fearless Pt. II",
@@ -31,6 +33,7 @@ const defaultTracks = [
     image: "https://i.scdn.co/image/ab67616d0000b273df7c14e866cf14a259563ca1",
     id: "4y1nvncvBhdoelqPMyXxis",
     uri: "spotify:track:4y1nvncvBhdoelqPMyXxis",
+    length: 194000,
   },
   {
     name: "Different World (feat. CORSAK)",
@@ -39,6 +42,7 @@ const defaultTracks = [
     image: "https://i.scdn.co/image/ab67616d0000b273a108e07c661f9fc54de9c43a",
     id: "4heFQCyiW0RUEX1Q1lb008",
     uri: "spotify:track:4heFQCyiW0RUEX1Q1lb008",
+    length: 203000,
   },
 ];
 

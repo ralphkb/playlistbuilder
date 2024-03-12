@@ -31,7 +31,7 @@
 }
 
 .TrackInfo h3 {
-  margin: 0.22rem 0;
+  margin: 0.25rem 0;
   color: #000;
   font-weight: bold;
 }
@@ -40,6 +40,7 @@
   font-size: 0.83rem;
   color: #000;
   font-weight: 600;
+  margin-top: 0;
 }
 
 .TrackInfo span {
@@ -47,8 +48,8 @@
 }
 
 .TrackImage {
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   margin-right: 0.8rem;
 }
 

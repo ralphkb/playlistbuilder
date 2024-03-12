@@ -2,6 +2,10 @@ import React from "react";
 import "./Track.css";
 
 const Track = (props) => {
+  const durationInMilliseconds = props.track.length;
+  const minutes = Math.floor(durationInMilliseconds / 60000);
+  const seconds = ((durationInMilliseconds % 60000) / 1000).toFixed(0);
+  const formattedDuration = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   const addTrack = (event) => {
     props.onAdd(props.track);
   };
@@ -38,6 +42,8 @@ const Track = (props) => {
           Artist: <span>{props.track.artist}</span>
           <br />
           Album: <span>{props.track.album}</span>
+          <br />
+          Duration: <span>{formattedDuration}</span>
         </p>
       </div>
       {renderAddOrRemove()}
