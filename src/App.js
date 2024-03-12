@@ -129,15 +129,19 @@ const App = () => {
       <Header />
       <div className="App">
         <SearchBar onSearch={search} />
-        <div className="App-playlist">
-          <SearchResults searchResults={searchResults} onAdd={addTrack} />
-          <Playlist
-            playlistName={playlistName}
-            playlistTracks={playlistTracks}
-            onNameChange={updatePlaylistName}
-            onRemove={removeTrack}
-            onSave={savePlaylist}
-          />
+        <div className="flex-container">
+          <div className="flex-item">
+            <SearchResults searchResults={searchResults} onAdd={addTrack} />
+          </div>
+          <div className="flex-item">
+            <Playlist
+              playlistName={playlistName}
+              playlistTracks={playlistTracks}
+              onNameChange={updatePlaylistName}
+              onRemove={removeTrack}
+              onSave={savePlaylist}
+            />
+          </div>
         </div>
       </div>
     </div>

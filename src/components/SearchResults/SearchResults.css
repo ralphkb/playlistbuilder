@@ -1,5 +1,4 @@
 .SearchResults {
-  width: 80%;
   max-height: 950px;
   overflow-y: scroll;
   background-color: rgba(29, 185, 84, 0.9);
@@ -7,10 +6,4 @@
   border-radius: 5px;
   margin-bottom: 1.5rem;
   padding: 20px;
-}
-
-@media only screen and (max-width: 440px) {
-  .SearchResults {
-    width: 77%;
-  }
 }

@@ -27,12 +27,12 @@ const Track = (props) => {
 
   return (
     <div className="Track">
+      <img
+        src={props.track.image}
+        alt={props.track.name}
+        className="TrackImage"
+      />
       <div className="TrackInfo">
-        <img
-          src={props.track.image}
-          alt={props.track.name}
-          className="TrackImage"
-        />
         <h3>{props.track.name}</h3>
         <p>
           Artist: <span>{props.track.artist}</span>

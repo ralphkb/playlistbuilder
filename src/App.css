@@ -1,7 +1,3 @@
-html {
-  font-size: 18px;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -26,6 +22,26 @@ h2 {
   font-family: "Work Sans", sans-serif;
   font-weight: 500;
   color: #fff;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-item {
+  flex: 1;
+  height: 100%;
+  flex-grow: 1;
+  margin: 0 0.8%;
+}
+
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+  }
+  .flex-item {
+    margin: 0 5%;
+  }
 }
 
 .App-playlist {
