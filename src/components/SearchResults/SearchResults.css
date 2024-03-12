@@ -7,3 +7,21 @@
   margin-bottom: 1.5rem;
   padding: 20px;
 }
+
+.SearchResults::-webkit-scrollbar {
+  width: 10px;
+}
+
+.SearchResults::-webkit-scrollbar-track {
+  background: rgba(29, 185, 84, 0.9);
+  border-radius: 5px;
+}
+
+.SearchResults::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 5px;
+}
+
+.SearchResults::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
