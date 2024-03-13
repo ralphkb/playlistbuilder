@@ -1,4 +1,4 @@
-const clientId = "187bf9c3917e41e2949d107396d07a74"; // Insert client ID here.
+const clientId = process.env.REACT_APP_CLIENT_ID;
 const redirectUri = "https://playlistbuilder.netlify.app/";
 let accessToken;
 
