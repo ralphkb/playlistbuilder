@@ -34,8 +34,8 @@
   color: black;
   border: 1px solid #006400;
   border-radius: 12px;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 6px 12px;
+  font-size: 18px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -44,8 +44,8 @@
   color: black;
   border: 1px solid #b30000;
   border-radius: 12px;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 6px 12px;
+  font-size: 18px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -81,5 +81,11 @@
 
   .TrackInfo p {
     font-size: 0.7rem;
+  }
+
+  .TrackImage {
+    width: 48px;
+    height: 48px;
+    margin-right: 0.7rem;
   }
 }

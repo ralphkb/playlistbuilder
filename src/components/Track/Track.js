@@ -18,13 +18,13 @@ const Track = (props) => {
     if (props.isRemoval) {
       return (
         <button className="TrackAction removeButton" onClick={removeTrack}>
-          Remove
+          {"\u2212"}
         </button>
       );
     }
     return (
       <button className="TrackAction addButton" onClick={addTrack}>
-        Add
+        {"\u002B"}
       </button>
     );
   };
