@@ -7,14 +7,29 @@ const Playlist = (props) => {
     props.onNameChange(event.target.value);
   };
 
+  const handleTypeChange = (event) => {
+    props.onTypeChange(event.target.value);
+  };
+
   return (
     <div className="Playlist">
-      <input
-        id="playlistNameInput"
-        name="playlistName"
-        onChange={handleNameChange}
-        defaultValue={"New Playlist"}
-      />
+      <div className="flex-row">
+        <input
+          id="playlistNameInput"
+          name="playlistName"
+          onChange={handleNameChange}
+          defaultValue={"Playlist Name"}
+          placeholder="Playlist Name"
+        />
+        <select
+          id="playlistType"
+          value={props.playlistType}
+          onChange={handleTypeChange}
+        >
+          <option value="public">Public</option>
+          <option value="private">Private</option>
+        </select>
+      </div>
       <TrackList
         tracks={props.playlistTracks}
         isRemoval={true}

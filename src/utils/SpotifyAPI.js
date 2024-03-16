@@ -43,7 +43,12 @@ const Spotify = {
         return accessToken;
       } else {
         // If access token is not found in URL or local storage, redirect to authorization URL
-        const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+        const scopes = [
+          "playlist-modify-public",
+          "playlist-modify-private",
+          "playlist-read-private",
+        ].join("%20");
+        const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${scopes}&redirect_uri=${redirectUri}`;
         window.location = accessUrl;
       }
     }
@@ -81,7 +86,7 @@ const Spotify = {
     }
   },
 
-  async savePlaylist(name, trackUris) {
+  async savePlaylist(name, playlistType, trackUris) {
     if (!name || !trackUris.length) {
       if (!name && !trackUris.length) {
         window.alert(
@@ -114,7 +119,10 @@ const Spotify = {
         {
           headers,
           method: "POST",
-          body: JSON.stringify({ name }),
+          body: JSON.stringify({
+            name,
+            public: playlistType === "public" ? true : false,
+          }),
         },
       );
       const playlistJsonResponse = await playlistResponse.json();
@@ -134,7 +142,7 @@ const Spotify = {
 
       // Alert the user that the playlist has been created successfully
       alert(
-        `A new playlist with the name: ${name} has been created successfully!`,
+        `A new ${playlistType} playlist with the name: ${name} has been created successfully!`,
       );
     } catch (error) {
       console.error(error);

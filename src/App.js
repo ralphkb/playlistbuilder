@@ -48,7 +48,8 @@ const defaultTracks = [
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
-  const [playlistName, setPlaylistName] = useState("New Playlist");
+  const [playlistName, setPlaylistName] = useState("Playlist Name");
+  const [playlistType, setPlaylistType] = useState("public");
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [initialLoad, setInitialLoad] = useState(true);
 
@@ -120,10 +121,15 @@ const App = () => {
     setPlaylistName(name);
   };
 
+  const updatePlaylistType = (type) => {
+    setPlaylistType(type);
+  };
+
   const savePlaylist = () => {
     const trackUris = playlistTracks.map((track) => track.uri);
-    Spotify.savePlaylist(playlistName, trackUris).then(() => {
-      setPlaylistName("New Playlist");
+    Spotify.savePlaylist(playlistName, playlistType, trackUris).then(() => {
+      setPlaylistName("Playlist Name");
+      setPlaylistType("public");
       setPlaylistTracks([]);
     });
   };
@@ -142,6 +148,8 @@ const App = () => {
               playlistName={playlistName}
               playlistTracks={playlistTracks}
               onNameChange={updatePlaylistName}
+              playlistType={playlistType}
+              onTypeChange={updatePlaylistType}
               onRemove={removeTrack}
               onSave={savePlaylist}
             />
