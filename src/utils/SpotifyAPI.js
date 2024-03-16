@@ -148,6 +148,111 @@ const Spotify = {
       console.error(error);
     }
   },
+
+  async fetchPlaylists() {
+    const accessToken = Spotify.getAccessToken();
+    const response = await fetch("https://api.spotify.com/v1/me", {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    const userData = await response.json();
+    const currentUserDisplayName = userData.display_name;
+
+    const playlistsResponse = await fetch(
+      "https://api.spotify.com/v1/me/playlists",
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    );
+    const playlistsData = await playlistsResponse.json();
+
+    // Filter playlists to only include those owned by the current user
+    const userPlaylists = playlistsData.items.filter(
+      (playlist) => playlist.owner.display_name === currentUserDisplayName,
+    );
+    return userPlaylists;
+  },
+
+  async editPlaylist(playlistId, name, playlistType, trackUris) {
+    if (!name || !trackUris.length) {
+      if (!name && !trackUris.length) {
+        window.alert(
+          "Please enter a playlist name and add songs to the playlist before saving it.",
+        );
+      } else if (!name) {
+        window.alert("Please enter a playlist name.");
+      } else {
+        window.alert("Please add songs to the playlist before saving it.");
+      }
+      return;
+    }
+
+    const accessToken = Spotify.getAccessToken();
+    const headers = { Authorization: `Bearer ${accessToken}` };
+
+    try {
+      // Show loading screen
+      document.getElementById("loading-screen").style.display = "flex";
+
+      await fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+        method: "PUT",
+        headers,
+        body: JSON.stringify({
+          name,
+          public: playlistType === "public" ? true : false,
+        }),
+      });
+
+      // Replace the playlist's tracks with the new list
+      await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+        method: "PUT",
+        headers,
+        body: JSON.stringify({ uris: trackUris }),
+      });
+
+      // Hide loading screen
+      document.getElementById("loading-screen").style.display = "none";
+
+      // Alert the user that the playlist has been updated successfully
+      alert(`Your playlist has been updated successfully!`);
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  async fetchTracksFromPlaylist(playlistID) {
+    const accessToken = Spotify.getAccessToken();
+    const url = `https://api.spotify.com/v1/playlists/${playlistID}/tracks`;
+
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data.items.map((item) => ({
+        id: item.track.id,
+        name: item.track.name,
+        artist: item.track.artists[0].name,
+        album: item.track.album.name,
+        uri: item.track.uri,
+        image: item.track.album.images[0].url,
+        length: item.track.duration_ms,
+      }));
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
+  },
 };
 
 export default Spotify;

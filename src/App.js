@@ -52,6 +52,7 @@ const App = () => {
   const [playlistType, setPlaylistType] = useState("public");
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [initialLoad, setInitialLoad] = useState(true);
+  const [selectedPlaylistId, setSelectedPlaylistId] = useState(null);
 
   if (initialLoad) {
     const savedPlaylistTracks = JSON.parse(
@@ -134,6 +135,28 @@ const App = () => {
     });
   };
 
+  const editPlaylist = () => {
+    const trackUris = playlistTracks.map((track) => track.uri);
+    Spotify.editPlaylist(
+      selectedPlaylistId,
+      playlistName,
+      playlistType,
+      trackUris,
+    ).then(() => {
+      setPlaylistName("Playlist Name");
+      setPlaylistType("public");
+      setPlaylistTracks([]);
+    });
+  };
+
+  const handlePlaylistSelected = (playlistId) => {
+    setSelectedPlaylistId(playlistId);
+  };
+
+  const handleTracksChange = (newTracks) => {
+    setPlaylistTracks(newTracks);
+  };
+
   return (
     <div>
       <Header />
@@ -152,6 +175,9 @@ const App = () => {
               onTypeChange={updatePlaylistType}
               onRemove={removeTrack}
               onSave={savePlaylist}
+              onEdit={editPlaylist}
+              onPlaylistSelected={handlePlaylistSelected}
+              onTracksChange={handleTracksChange}
             />
           </div>
         </div>
