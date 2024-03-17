@@ -53,6 +53,7 @@ const App = () => {
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [initialLoad, setInitialLoad] = useState(true);
   const [selectedPlaylistId, setSelectedPlaylistId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   if (initialLoad) {
     const savedPlaylistTracks = JSON.parse(
@@ -83,6 +84,7 @@ const App = () => {
   }, []);
 
   const search = (term) => {
+    setSearchTerm(term);
     if (term.trim() === "") {
       const filteredDefaultTracks = defaultTracks.filter((defaultTrack) => {
         return !playlistTracks.some((track) => track.id === defaultTrack.id);
@@ -115,7 +117,14 @@ const App = () => {
     setPlaylistTracks((prevTracks) =>
       prevTracks.filter((currentTrack) => currentTrack.id !== track.id),
     );
-    setSearchResults((prevResults) => [track, ...prevResults]);
+    const searchTermRegex = new RegExp(`\\b${searchTerm.toLowerCase()}\\b`);
+    if (
+      !searchResults.some((result) => result.id === track.id) &&
+      searchTerm.trim() !== "" &&
+      searchTermRegex.test(track.name.toLowerCase())
+    ) {
+      setSearchResults((prevResults) => [track, ...prevResults]);
+    }
   };
 
   const updatePlaylistName = (name) => {

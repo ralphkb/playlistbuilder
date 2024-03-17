@@ -67,7 +67,11 @@ const Playlist = (props) => {
   return (
     <div className="Playlist">
       <div className="flex-row">
-        <select id="playlists" onChange={handleSelectChange}>
+        <select
+          id="playlists"
+          onChange={handleSelectChange}
+          aria-label="Playlist Option"
+        >
           {playlists.map((playlist) => (
             <option key={playlist.id} value={playlist.name}>
               {playlist.name}
@@ -86,6 +90,7 @@ const Playlist = (props) => {
           id="playlistType"
           value={props.playlistType}
           onChange={handleTypeChange}
+          aria-label="Playlist Type Option"
         >
           <option value="public">Public</option>
           <option value="private">Private</option>

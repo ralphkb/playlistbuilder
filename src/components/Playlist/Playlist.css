@@ -33,7 +33,6 @@
 .Playlist .flex-row {
   display: flex;
   flex-direction: row;
-  align-items: center;
   width: 100%;
 }
 
@@ -84,5 +83,11 @@
   .flex-row select {
     width: 100%;
     font-size: 12px;
+  }
+  #playlistType {
+    flex: 0.8 1;
+  }
+  .Playlist {
+    padding: 20px 10px;
   }
 }
