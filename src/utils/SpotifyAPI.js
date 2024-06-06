@@ -248,6 +248,7 @@ const Spotify = {
         uri: item.track.uri,
         image: item.track.album.images[0].url,
         length: item.track.duration_ms,
+        addedAt: item.added_at,
       }));
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);

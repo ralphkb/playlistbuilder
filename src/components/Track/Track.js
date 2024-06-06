@@ -6,6 +6,13 @@ const Track = (props) => {
   const minutes = Math.floor(durationInMilliseconds / 60000);
   const seconds = ((durationInMilliseconds % 60000) / 1000).toFixed(0);
   const formattedDuration = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  const addedAt = props?.track?.addedAt;
+  let formattedAddedAt = undefined;
+  if (addedAt) {
+    const date = new Date(addedAt);
+    const options = { year: "numeric", month: "short", day: "numeric" };
+    formattedAddedAt = date.toLocaleDateString("en-US", options);
+  }
   const addTrack = (event) => {
     props.onAdd(props.track);
   };
@@ -44,6 +51,12 @@ const Track = (props) => {
           Album: <span>{props.track.album}</span>
           <br />
           Duration: <span>{formattedDuration}</span>
+          {formattedAddedAt && (
+            <>
+              <br />
+              Date Added: <span>{formattedAddedAt}</span>
+            </>
+          )}
         </p>
       </div>
       {renderAddOrRemove()}
