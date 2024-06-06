@@ -28,7 +28,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - **Add Songs to the Custom Playlist**: Add tracks to the playlist by clicking on the `+` button.
 - **Remove Songs from the Custom Playlist**: Remove tracks from the playlist by clicking on the `-` button.
 - **Change Playlist Title**: By default the title is "New Playlist" in the input bar but you can change it to any name you want.
+- **Change Playlist Type**: You can change the playlist type between public and private.
 - **Save The Playlist**: Save your Custom playlist to your Spotify account and enjoy it on all your devices.
+- **Edit Other Playlists**: You can select any of your current Spotify playlists and edit them by removing or adding songs then clicking the edit button.
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
