@@ -1,5 +1,5 @@
 const clientId = process.env.REACT_APP_CLIENT_ID;
-const redirectUri = "https://playlistbuilder.netlify.app/";
+const redirectUri = process.env.REACT_APP_REDIRECT_URI;
 let accessToken;
 
 const Spotify = {
