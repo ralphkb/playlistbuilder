@@ -3,7 +3,6 @@ import "./App.css";
 
 import Header from "./components/Header/Header.js";
 import Playlist from "./components/Playlist/Playlist.js";
-import SearchBar from "./components/SearchBar/SearchBar.js";
 import SearchResults from "./components/SearchResults/SearchResults.js";
 import Spotify from "./utils/SpotifyAPI.js";
 
@@ -36,13 +35,13 @@ const defaultTracks = [
     length: 194000,
   },
   {
-    name: "Different World (feat. CORSAK)",
+    name: "Lily",
     artist: "Alan Walker",
     album: "Different World",
     image: "https://i.scdn.co/image/ab67616d0000b273a108e07c661f9fc54de9c43a",
-    id: "4heFQCyiW0RUEX1Q1lb008",
-    uri: "spotify:track:4heFQCyiW0RUEX1Q1lb008",
-    length: 203000,
+    id: "0lks2Kt9veMOFEAPN0fsqN",
+    uri: "spotify:track:0lks2Kt9veMOFEAPN0fsqN",
+    length: 195840,
   },
 ];
 
@@ -167,15 +166,18 @@ const App = () => {
   };
 
   return (
-    <div>
+    <>
       <Header />
       <div className="App">
-        <SearchBar onSearch={search} />
         <div className="flex-container">
           <div className="flex-item">
-            <SearchResults searchResults={searchResults} onAdd={addTrack} />
+            <SearchResults
+              searchResults={searchResults}
+              onAdd={addTrack}
+              onSearch={search}
+            />
           </div>
-          <div className="flex-item">
+          <div className="flex-item" id="playlistFlex">
             <Playlist
               playlistName={playlistName}
               playlistTracks={playlistTracks}
@@ -191,7 +193,7 @@ const App = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,7 +1,14 @@
-import React from "react";
-import "./Track.css";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
-const Track = (props) => {
+export default function Track(props) {
   const durationInMilliseconds = props.track.length;
   const minutes = Math.floor(durationInMilliseconds / 60000);
   const seconds = ((durationInMilliseconds % 60000) / 1000).toFixed(0);
@@ -22,46 +29,90 @@ const Track = (props) => {
   };
 
   const renderAddOrRemove = () => {
-    if (props.isRemoval) {
-      return (
-        <button className="TrackAction removeButton" onClick={removeTrack}>
-          {"\u2212"}
-        </button>
-      );
-    }
-    return (
-      <button className="TrackAction addButton" onClick={addTrack}>
-        {"\u002B"}
-      </button>
+    const AddIconButton = (props) => (
+      <IconButton {...props} aria-label="add">
+        <AddCircleIcon sx={{ height: 38, width: 38 }} />
+      </IconButton>
     );
+    const RemoveIconButton = (props) => (
+      <IconButton {...props} aria-label="remove">
+        <RemoveCircleIcon sx={{ height: 38, width: 38 }} />
+      </IconButton>
+    );
+    if (props.isRemoval) {
+      return <RemoveIconButton onClick={removeTrack} />;
+    }
+    return <AddIconButton onClick={addTrack} />;
   };
 
   return (
-    <div className="Track">
-      <img
-        src={props.track.image}
+    <Card
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        borderRadius: "0px",
+        marginTop: "-1px",
+        backgroundImage: "none",
+        "&:hover": {
+          boxShadow: "0px 0px 10px rgba(0,0,0,0.2)",
+          borderRadius: "8px",
+          backgroundColor: "rgba(26,26,26,255)",
+        },
+      }}
+    >
+      <CardMedia
+        component="img"
+        sx={{
+          width: 96,
+          height: 96,
+          marginLeft: "0.8rem",
+          display: "flex",
+          borderRadius: "5px",
+          backgroundColor: "#121212",
+        }}
+        image={props.track.image}
         alt={props.track.name}
-        className="TrackImage"
       />
-      <div className="TrackInfo">
-        <h3>{props.track.name}</h3>
-        <p>
-          Artist: <span>{props.track.artist}</span>
-          <br />
-          Album: <span>{props.track.album}</span>
-          <br />
-          Duration: <span>{formattedDuration}</span>
-          {formattedAddedAt && (
-            <>
-              <br />
-              Date Added: <span>{formattedAddedAt}</span>
-            </>
-          )}
-        </p>
-      </div>
-      {renderAddOrRemove()}
-    </div>
-  );
-};
+      <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <CardContent sx={{ flex: "1 0 auto" }}>
+          <Typography component="div" variant="h5">
+            {props.track.name}
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            color="text.secondary"
+            component="div"
+          >
+            {props.track.artist}
+          </Typography>
 
-export default Track;
+          <Typography
+            variant="subtitle2"
+            color="text.secondary"
+            component="div"
+          >
+            Album: {props.track.album}
+          </Typography>
+
+          <Typography
+            variant="subtitle2"
+            color="text.secondary"
+            component="div"
+          >
+            Length: {formattedDuration}
+          </Typography>
+          {formattedAddedAt && (
+            <Typography
+              variant="subtitle2"
+              color="text.secondary"
+              component="div"
+            >
+              Date Added: {formattedAddedAt}
+            </Typography>
+          )}
+        </CardContent>
+      </Box>
+      <Box sx={{ ml: "auto", pr: "0.8rem" }}>{renderAddOrRemove()}</Box>
+    </Card>
+  );
+}
