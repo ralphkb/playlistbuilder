@@ -15,12 +15,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 2. Clone the repository: `git clone https://github.com/ralphkb/playlistbuilder.git`
 3. Navigate to the project directory, for example: `cd playlistbuilder`
 4. Run `npm install` to install the dependencies.
-5. Create [an app](https://developer.spotify.com/documentation/web-api/concepts/apps) on the spotify developer dashboard and add "http://localhost:3000" in your app's `Redirect URIs` settings.
-6. Rename .env.example to .env and paste your app's client ID in it.
-7. Open `src/utils/SpotifyAPI.js` and change the redirectUri to "http://localhost:3000"
-8. Start the server by running `npm start`
-9. Open `http://localhost:3000` in your browser, you will need to sign in to your Spotify account and authorize access.
-10. When done using the application, you can close it by pressing `Ctrl + C` in the terminal and closing your browser.
+5. Create [an app](https://developer.spotify.com/documentation/web-api/concepts/apps) on the spotify developer dashboard, copy the client ID and add http://localhost:3000 in the `Redirect URIs` of your app's settings.
+6. Rename `.env.example` to `.env` and paste your app's client ID in it alongside adding "http://localhost:3000" as the REDIRECT_URI.
+7. Start the server by running `npm start`
+8. Open `http://localhost:3000` in your browser, you will need to sign in to your Spotify account and authorize access.
+9. When done using the application, you can close it by pressing `Ctrl + C` in the terminal and closing your browser.
 
 ## Features
 - **Spotify Login**: Spotify will you to log in or set up a new account, to integrate with this App and start the process of creating new playlists.
