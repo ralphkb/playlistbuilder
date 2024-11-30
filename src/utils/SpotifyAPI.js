@@ -171,7 +171,7 @@ const Spotify = {
 
     // Filter playlists to only include those owned by the current user
     const userPlaylists = playlistsData.items.filter(
-      (playlist) => playlist.owner.display_name === currentUserDisplayName,
+      (playlist) => playlist?.owner.display_name === currentUserDisplayName,
     );
     return userPlaylists;
   },
