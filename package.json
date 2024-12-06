@@ -6,8 +6,8 @@
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
     "@fontsource/roboto": "^5.1.0",
-    "@mui/icons-material": "^6.1.9",
-    "@mui/material": "^6.1.9",
+    "@mui/icons-material": "^6.1.10",
+    "@mui/material": "^6.1.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -37,7 +37,7 @@
     "@parcel/packager-raw-url": "^2.13.2",
     "@parcel/transformer-webmanifest": "^2.13.2",
     "parcel": "^2.13.2",
-    "prettier": "^3.4.1",
+    "prettier": "^3.4.2",
     "process": "^0.11.10"
   }
 }
