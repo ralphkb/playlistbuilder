@@ -5,9 +5,9 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@fontsource/roboto": "^5.2.1",
-    "@mui/icons-material": "^6.4.6",
-    "@mui/material": "^6.4.6",
+    "@fontsource/roboto": "^5.2.5",
+    "@mui/icons-material": "^6.4.7",
+    "@mui/material": "^6.4.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -31,7 +31,7 @@
     "@parcel/packager-raw-url": "^2.13.3",
     "@parcel/transformer-webmanifest": "^2.13.3",
     "parcel": "^2.13.3",
-    "prettier": "^3.5.2",
+    "prettier": "^3.5.3",
     "process": "^0.11.10"
   }
 }
